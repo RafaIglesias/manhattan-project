@@ -1,10 +1,16 @@
 import React, { Component } from 'react';
-import { Text, View, StyleSheet } from 'react-native';
+import { Text, View, StyleSheet, Button } from 'react-native';
 
 const Blog = props => {
 	return (
 		<View style={styles.screen}>
 			<Text>Blog</Text>
+			<Button
+				title='BlogDetail'
+				onPress={() => {
+					props.navigation.navigate({ routeName: 'BlogDetail' });
+				}}
+			/>
 		</View>
 	);
 };

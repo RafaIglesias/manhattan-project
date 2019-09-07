@@ -3,25 +3,21 @@ import { createStackNavigator } from 'react-navigation-stack';
 import { createBottomTabNavigator } from 'react-navigation-tabs';
 import { createAppContainer } from 'react-navigation';
 
-import MatchesScreen from '../screens/Matches';
-import MessagesScreen from '../screens/Messages';
-import BlogScreen from '../screens/Blog';
-import ProfileScreen from '../screens/Profile';
+import MatchesScreen from '../Containers/Matches';
+import MessagesScreen from '../Containers/Messages';
+import BlogScreen from '../Containers/Blog';
+import ProfileScreen from '../Containers/Profile';
+import BlogDetailScreen from '../screens/BlogDetailScreen';
 
-const HomeNavigation = createStackNavigator({
-	Matches: MatchesScreen,
-	Messages: MessagesScreen,
-	Blog: {
-		screen: BlogScreen,
-	},
-	Profile: ProfileScreen,
+const BlogNavigation = createStackNavigator({
+	Blog: BlogScreen,
+	BlogDetail: BlogDetailScreen,
 });
 
 const HomeTabNavigation = createBottomTabNavigator({
-	Home: HomeNavigation,
 	Matches: MatchesScreen,
 	Messages: MessagesScreen,
-	Blog: BlogScreen,
+	Blog: BlogNavigation,
 	Profile: ProfileScreen,
 });
 
