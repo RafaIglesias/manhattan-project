@@ -1,70 +1,105 @@
 import React, { Component } from 'react';
-import { Text, View, StyleSheet, Button, ScrollView } from 'react-native';
+import { View, StyleSheet, Button, ScrollView } from 'react-native';
+import {
+	Container,
+	Content,
+	Card,
+	CardItem,
+	Body,
+	Text,
+	Thumbnail,
+	Left,
+} from 'native-base';
+
+const Items = [
+	{
+		name: 'Maria',
+		img: 'http://dev.nrt24.ru/wp-content/uploads/2017/08/Mila-Kunis.jpg',
+		index: 0,
+	},
+	{
+		name: 'Marta',
+		img:
+			'https://listaka.com/wp-content/uploads/2017/12/shutterstock_530967340-1.jpg',
+
+		index: 1,
+	},
+	{
+		name: 'Rex',
+		img:
+			'https://cdn.psychologytoday.com/sites/default/files/styles/article-inline-half-caption/public/field_blog_entry_images/2018-09/shutterstock_648907024.jpg?itok=0hb44OrI',
+
+		index: 2,
+	},
+	{
+		name: 'Titi',
+		img:
+			'https://images.pexels.com/photos/1239291/pexels-photo-1239291.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500',
+
+		index: 3,
+	},
+	{
+		name: 'Patu',
+		img:
+			'https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80',
+
+		index: 4,
+	},
+	{
+		name: 'Nuria',
+		img:
+			'https://img.freepik.com/free-photo/smiling-young-pretty-woman-looking-camera-touching-face_1262-15253.jpg?size=626&ext=jpg',
+
+		index: 5,
+	},
+	{
+		name: 'Noelia',
+		img:
+			'http://www.worldwomanfoundation.com/summit2018/wp-content/uploads/2018/09/Jeannette_Ceja-_Head_Shot_2018_0.jpg',
+
+		index: 6,
+	},
+	{
+		name: 'Pauli',
+		img:
+			'https://images.unsplash.com/photo-1500522144261-ea64433bbe27?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1000&q=80',
+
+		index: 7,
+	},
+];
 
 const Messages = props => {
 	return (
-		<View style={styles.container}>
+		<Container style={styles.container}>
 			<ScrollView>
-				<View style={styles.item1}>
-					<Text style={{ fontSize: 20, color: '#fff' }}>Item number 1</Text>
-				</View>
-				<View style={styles.item2}>
-					<Text style={{ fontSize: 20, color: '#fff' }}>Item number 1</Text>
-				</View>
-				<View style={styles.item3}>
-					<Text style={{ fontSize: 20, color: '#fff' }}>Item number 1</Text>
-				</View>
-				<View style={styles.item4}>
-					<Text style={{ fontSize: 20, color: '#fff' }}>Item number 1</Text>
-				</View>
-				<Button
-					title='Blog'
-					onPress={() => {
-						props.navigation.navigate({ routeName: 'Blog' });
-					}}
-				/>
-				<Button
-					title='Go Back'
-					onPress={() => {
-						props.navigation.goBack();
-					}}
-				/>
+				<Content>
+					{Items.map(item => {
+						return (
+							<Card key={item.index}>
+								<CardItem
+									button
+									onPress={() => {
+										props.navigation.navigate({ routeName: 'MessagesDetail' });
+									}}>
+									<Left>
+										<Thumbnail large source={{ uri: item.img }} />
+										<Body>
+											<Text>{item.name}</Text>
+										</Body>
+									</Left>
+								</CardItem>
+							</Card>
+						);
+					})}
+				</Content>
 			</ScrollView>
-		</View>
+		</Container>
 	);
 };
 
 const styles = StyleSheet.create({
 	container: {
-		flex: 1,
-		marginTop: 40,
-		justifyContent: 'center',
-		backgroundColor: '#fff',
-		alignItems: 'stretch',
-	},
-	title: {
-		fontSize: 20,
-		color: '#fff',
-	},
-	item1: {
-		backgroundColor: 'orange',
-		flex: 1,
-		height: 120,
-	},
-	item2: {
-		backgroundColor: 'purple',
-		flex: 1,
-		height: 120,
-	},
-	item3: {
-		backgroundColor: 'yellow',
-		flex: 1,
-		height: 120,
-	},
-	item4: {
-		backgroundColor: 'red',
-		flex: 1,
-		height: 120,
+		marginTop: 10,
 	},
 });
 

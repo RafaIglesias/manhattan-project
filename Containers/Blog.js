@@ -1,19 +1,25 @@
 import React, { Component } from 'react';
 import { Text, View, StyleSheet, Button } from 'react-native';
 
-const Blog = props => {
-	return (
-		<View style={styles.screen}>
-			<Text>Blog</Text>
-			<Button
-				title='BlogDetail'
-				onPress={() => {
-					props.navigation.navigate({ routeName: 'BlogDetail' });
-				}}
-			/>
-		</View>
-	);
-};
+class Blog extends React.Component {
+	static navigationOptions = {
+		title: 'Blog',
+		/* No more header config here! */
+	};
+	render() {
+		return (
+			<View style={styles.screen}>
+				<Text>Blog</Text>
+				<Button
+					title='BlogDetail'
+					onPress={() => {
+						this.props.navigation.navigate({ routeName: 'BlogDetail' });
+					}}
+				/>
+			</View>
+		);
+	}
+}
 
 const styles = StyleSheet.create({
 	screen: {
