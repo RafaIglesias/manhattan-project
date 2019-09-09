@@ -25,12 +25,10 @@ const HomeTabNavigation = createBottomTabNavigator(
 		Matches: {
 			screen: MatchesScreen,
 			navigationOptions: {
-				tabBarIcon: () => {
-					return (
-						<Button small style={{ backgroundColor: 'black' }}>
-							<Icon type='FontAwesome' name='paw' />
-						</Button>
-					);
+				tabBarLabel: '',
+				tabBarIcon: ({ focused }) => {
+					const iconFocused = focused ? 'blue' : 'black';
+					return <Icon type='FontAwesome' name='paw' />;
 				},
 			},
 		},
@@ -38,11 +36,7 @@ const HomeTabNavigation = createBottomTabNavigator(
 			screen: MessagesNavigation,
 			navigationOptions: {
 				tabBarIcon: () => {
-					return (
-						<Button small style={{ backgroundColor: 'black' }}>
-							<Icon name='ios-chatboxes' />
-						</Button>
-					);
+					return <Icon name='ios-chatboxes' />;
 				},
 			},
 		},
@@ -50,11 +44,7 @@ const HomeTabNavigation = createBottomTabNavigator(
 			screen: BlogNavigation,
 			navigationOptions: {
 				tabBarIcon: () => {
-					return (
-						<Button small style={{ backgroundColor: 'black' }}>
-							<Icon name='ios-paper' />
-						</Button>
-					);
+					return <Icon name='ios-paper' />;
 				},
 			},
 		},
@@ -62,11 +52,7 @@ const HomeTabNavigation = createBottomTabNavigator(
 			screen: ProfileScreen,
 			navigationOptions: {
 				tabBarIcon: () => {
-					return (
-						<Button small style={{ backgroundColor: 'black' }}>
-							<Icon name='md-person' />
-						</Button>
-					);
+					return <Icon name='md-person' />;
 				},
 			},
 		},
@@ -77,15 +63,17 @@ const HomeTabNavigation = createBottomTabNavigator(
 			inactiveTintColor: 'black',
 			labelStyle: {
 				fontSize: 12,
-				paddingTop: 10,
+				paddingTop: 5,
 			},
 			style: {
 				backgroundColor: '#fff',
-				borderTopWidth: 0,
-				height: 50,
+				borderTopWidth: 1,
+				borderTopColor: 'black',
+				height: 58,
+				display: 'flex',
 				alignItems: 'center',
-				marginBottom: 0,
-				paddingBottom: 10,
+				paddingBottom: 5,
+				paddingTop: 5,
 			},
 		},
 	}
