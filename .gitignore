@@ -1,5 +1,14 @@
 /frontend/node_modules/**/*
 /frontend/.expo/*
+/frontend/package-lock.json
+/frontend/.expo-shared
+/frontend/.watchmanconfig
+/frontend/babel.config.js
+
+/backend/node_modules
+/backend/package-lock.json
+/frontend/nodemon.json
+
 npm-debug.*
 *.jks
 *.p8
@@ -9,7 +18,3 @@ npm-debug.*
 *.orig.*
 web-build/
 web-report/
-/frontend/package-lock.json
-/frontend/.expo-shared
-/frontend/.watchmanconfig
-/frontend/babel.config.js
