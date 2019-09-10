@@ -12,6 +12,8 @@ import {
 	Button,
 } from 'native-base';
 
+import DescriptionMatch from '../Components/DescriptionMatch';
+
 const Items = [
 	{
 		name: 'Maria',
@@ -19,6 +21,9 @@ const Items = [
 		imgD:
 			'https://boygeniusreport.files.wordpress.com/2016/11/puppy-dog.jpg?quality=98&strip=all&w=782',
 		index: 0,
+		age: 22,
+		gender: 'Female',
+		bio: 'Me gustan las putas estrellas tete asi que bajame una!',
 	},
 	{
 		name: 'Marta',
@@ -77,59 +82,96 @@ const Items = [
 	},
 ];
 
-const Matches = props => {
-	return (
-		<Container>
-			<Content padder>
-				<ScrollView>
-					<Text>Matches</Text>
-					{Items.map(item => {
-						return (
-							<Card key={item.index}>
-								<CardItem header>
-									<Text>{item.name}</Text>
-								</CardItem>
-								<CardItem
-									button
-									onPress={() => {
-										props.navigation.navigate({ routeName: 'Messages' });
-									}}>
-									<Body
-										style={{ flexDirection: 'row', justifyContent: 'center' }}>
-										<Image
-											source={{
-												uri: item.imgG,
+class Matches extends React.Component {
+	state = {
+		open: false,
+	};
+	render() {
+		return (
+			<Container>
+				<Content padder>
+					<ScrollView>
+						<Text>Matches</Text>
+						{Items.map(item => {
+							return (
+								<Card key={item.index}>
+									<CardItem
+										button
+										onPress={() => {
+											if (this.state.open) {
+												this.setState({ open: false });
+											}
+											if (!this.state.open) {
+												this.setState({ open: true });
+											}
+										}}>
+										<Body
+											style={{
+												flexDirection: 'row',
+												justifyContent: 'center',
+											}}>
+											<Image
+												source={{
+													uri: item.imgG,
+												}}
+												style={{ width: 200, height: 200 }}
+											/>
+											<Image
+												source={{
+													uri: item.imgD,
+												}}
+												style={{ width: 200, height: 200 }}
+											/>
+										</Body>
+									</CardItem>
+									<CardItem footer style={styles.Name}>
+										<Text>{item.name}</Text>
+										<Text>1 Km</Text>
+									</CardItem>
+									{this.state.open ? <DescriptionMatch item={item} /> : null}
+									<CardItem footer style={styles.Name}>
+										<Button
+											onPress={() => {
+												alert('Dislike');
 											}}
-											style={{ width: 200, height: 200 }}
-										/>
-										<Image
-											source={{
-												uri: item.imgD,
+											style={styles.dislike}>
+											<Icon name='heart-dislike' />
+										</Button>
+										<Button
+											onPress={() => {
+												alert('Like');
 											}}
-											style={{ width: 200, height: 200 }}
-										/>
-									</Body>
-								</CardItem>
-								<CardItem
-									footer
-									button
-									onPress={() => {
-										props.navigation.navigate({ routeName: 'Messages' });
-									}}>
-									<Button style={{ backgroundColor: 'blue' }}>
-										<Icon name='heart' />
-									</Button>
-									<Button style={{ backgroundColor: 'black', marginLeft: 20 }}>
-										<Icon name='heart-dislike' />
-									</Button>
-								</CardItem>
-							</Card>
-						);
-					})}
-				</ScrollView>
-			</Content>
-		</Container>
-	);
-};
+											style={styles.like}>
+											<Icon name='heart' />
+										</Button>
+									</CardItem>
+								</Card>
+							);
+						})}
+					</ScrollView>
+				</Content>
+			</Container>
+		);
+	}
+}
+
+const styles = StyleSheet.create({
+	Name: {
+		display: 'flex',
+		justifyContent: 'space-between',
+	},
+	like: {
+		backgroundColor: 'blue',
+		width: 150,
+		display: 'flex',
+		justifyContent: 'center',
+	},
+	dislike: {
+		backgroundColor: 'black',
+		width: 150,
+		display: 'flex',
+		justifyContent: 'center',
+	},
+});
 
 export default Matches;
