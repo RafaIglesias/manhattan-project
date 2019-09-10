@@ -8,6 +8,7 @@ import MatchesScreen from '../Containers/Matches';
 import MessagesScreen from '../Containers/Messages';
 import BlogScreen from '../Containers/Blog';
 import ProfileScreen from '../Containers/Profile';
+import MatchDetailScreen from '../screens/MatchDetailScreen';
 import BlogDetailScreen from '../screens/BlogDetailScreen';
 import MessagesDetailScreen from '../screens/MessagesDetailScreen';
 
@@ -19,11 +20,15 @@ const MessagesNavigation = createStackNavigator({
 	Messages: MessagesScreen,
 	MessagesDetail: MessagesDetailScreen,
 });
+const MatchNavigation = createStackNavigator({
+	Match: MatchesScreen,
+	MatchDetail: MatchDetailScreen,
+});
 
 const HomeTabNavigation = createBottomTabNavigator(
 	{
 		Matches: {
-			screen: MatchesScreen,
+			screen: MatchNavigation,
 			navigationOptions: {
 				tabBarLabel: '',
 				tabBarIcon: ({ focused }) => {
