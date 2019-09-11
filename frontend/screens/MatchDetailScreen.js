@@ -4,7 +4,7 @@ import { Text, View, StyleSheet, Button } from 'react-native';
 const BlogDetail = props => {
 	return (
 		<View style={styles.screen}>
-			<Text>BlogDetail</Text>
+			<Text>Match Details of the female</Text>
 		</View>
 	);
 };

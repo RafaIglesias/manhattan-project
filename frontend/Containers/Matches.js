@@ -116,12 +116,11 @@ const Items = [
 
 class Matches extends Component {
 	render() {
-		const HandleGender = gender => {
-			console.log(gender);
-			if (gender.gender === 'Female') {
+		const HandleGender = ({ gender }) => {
+			if (gender === 'Female') {
 				return <FemaleSymbol />;
 			}
-			if (gender.gender === 'Male') {
+			if (gender === 'Male') {
 				return <MaleSymbol />;
 			} else {
 				return <TranformerSymbol />;
@@ -189,7 +188,6 @@ class Matches extends Component {
 										<View>
 											<Text>1 Km</Text>
 											<HandleGender gender={item.gender} />
-											{console.log(item.gender)}
 										</View>
 									</CardItem>
 									<CardItem footer style={styles.Name}>

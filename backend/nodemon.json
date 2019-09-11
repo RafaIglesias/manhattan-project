@@ -1,7 +1,7 @@
 {
 	"env": {
-		"MONGO_USER": "Whiskey",
-		"MONGO_PASSWORD": "aLxl6woqxSOwuqzy",
+		"MONGO_USER": "whiskey",
+		"MONGO_PASSWORD": "BE3jCzyKrCqx3yGp",
 		"MONGO_DB": "posts-react-dev"
 	}
 }
