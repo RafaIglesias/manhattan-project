@@ -2,10 +2,6 @@ import React, { Component } from 'react';
 import { Text, View, StyleSheet, Button } from 'react-native';
 
 class Blog extends React.Component {
-	static navigationOptions = {
-		title: 'Blog',
-		/* No more header config here! */
-	};
 	render() {
 		return (
 			<View style={styles.screen}>
